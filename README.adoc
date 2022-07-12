@@ -1,0 +1,23 @@
+= BACKEND WEARABLE-DEVICES
+
+== How to start
+* First of all, we need to set ClickHouse-server
+
+ 3 different ways to do it;
+1) execute build.sh file (chmod +x build.sh && ./build.sh)
+2) with using docker-compose (cd clickhouse-dc && docker-compose up -d)
+3) do it locally: cloning Clickhouse repo, following all instructions from official documentation, then you should build clickhouse, after that (./clickhouse-server)
+
+Now you have to connect client (./clickhouse-client), after you are first time in clickhouse-client run the following queries (only for the first time):
+```
+1) CREATE DATABASE WEARABLE_DEVICES;
+2) USE WEARABLE_DEVICES;
+3) CREATE TABLE data (json String) ENGINE = Memory;
+```
+
+* Second step:
+
+You have to authorize you device on Google fit (Aouth 2) for acquire next information (UID, OAUTH_TOKEN, APP_SECRET_KEY, CLIENT_ID). This field will help us to get data from Google fit.
+More information here (https://developers.google.com/fit/rest/v1/authorization#authorizing_requests_with_oauth_20)
+
+* Third step: `run main.py`
